@@ -1,0 +1,6 @@
+-- Creazione bucket Storage (descritto a scopo informativo/documentazione)
+-- I bucket devono essere creati tramite Supabase Dashboard o client SDK:
+-- memories (pubblico) - Foto e audio dei ricordi di Memoriae
+-- avatars (pubblico) - Foto dei profili utente
+-- attachments (privato) - Allegati di note cliniche e messaggi
+-- audio-messages (privato) - Messaggi vocali delle chat
