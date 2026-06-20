@@ -34,9 +34,15 @@ export function MainLayout({ children }: MainLayoutProps) {
     const isHighContrast = profile.high_contrast_mode
     const isMotionReduced = profile.motion_reduced
 
-    setPatientLargeFont(isLargeFont)
-    setPatientHighContrast(isHighContrast)
-    setPatientMotionReduced(isMotionReduced)
+    if (patientLargeFont !== isLargeFont) {
+      setPatientLargeFont(isLargeFont)
+    }
+    if (patientHighContrast !== isHighContrast) {
+      setPatientHighContrast(isHighContrast)
+    }
+    if (patientMotionReduced !== isMotionReduced) {
+      setPatientMotionReduced(isMotionReduced)
+    }
 
     // Modifica le classi del body
     if (isLargeFont) {
@@ -56,7 +62,16 @@ export function MainLayout({ children }: MainLayoutProps) {
     } else {
       document.body.classList.remove('motion-reduced')
     }
-  }, [profile, setPatientLargeFont, setPatientHighContrast, setPatientMotionReduced])
+  }, [
+    profile,
+    patientLargeFont,
+    patientHighContrast,
+    patientMotionReduced,
+    setPatientLargeFont,
+    setPatientHighContrast,
+    setPatientMotionReduced,
+  ])
+
 
   if (loading) {
     return (
