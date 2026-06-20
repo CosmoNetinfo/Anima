@@ -69,8 +69,8 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-primary-light/40 via-background to-background p-4 sm:p-6 lg:p-8">
       <div className="w-full max-w-md space-y-8">
         <div className="flex flex-col items-center justify-center text-center space-y-2 select-none">
-          <div className="flex items-center justify-center h-16 w-16 rounded-2xl bg-white border border-border shadow-sm p-2">
-            <img src="/icons/icon-192.png" alt="Anima Logo" className="h-full w-full object-contain" />
+          <div className="flex items-center justify-center h-16 w-16 rounded-2xl bg-white border border-border shadow-sm overflow-hidden">
+            <img src="/icons/icon-192.png" alt="Anima Logo" className="h-full w-full object-cover scale-135" />
           </div>
           <h2 className="text-3xl font-extrabold tracking-tight text-primary">Anima</h2>
           <p className="text-sm text-muted-foreground font-medium">Cura che connette</p>
@@ -115,7 +115,7 @@ export default function LoginPage() {
                 </div>
               )}
             </CardContent>
-            <CardFooter className="flex flex-col gap-4">
+            <CardFooter className="flex flex-col gap-4 border-t-0 bg-transparent pt-0 pb-6">
               <Button type="submit" className="w-full font-semibold" disabled={loading}>
                 {loading ? 'Caricamento...' : isMagicLink ? 'Invia Magic Link' : 'Accedi'}
               </Button>
