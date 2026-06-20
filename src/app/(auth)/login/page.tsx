@@ -115,7 +115,7 @@ export default function LoginPage() {
                 </div>
               )}
             </CardContent>
-            <CardFooter className="flex flex-col gap-4 border-t-0 bg-transparent pt-0 pb-6">
+            <CardFooter className="flex flex-col gap-4 border-t-0 bg-transparent pt-4 pb-6">
               <Button type="submit" className="w-full font-semibold" disabled={loading}>
                 {loading ? 'Caricamento...' : isMagicLink ? 'Invia Magic Link' : 'Accedi'}
               </Button>
