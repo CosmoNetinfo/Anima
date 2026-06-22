@@ -16,7 +16,7 @@ export interface Structure {
   phone?: string
   email?: string
   logo_url?: string
-  settings?: Record<string, any>
+  settings?: Record<string, unknown>
   created_at: string
   updated_at?: string
 }
@@ -98,6 +98,9 @@ export interface MedicationLog {
   skip_reason?: string
   notes?: string
   created_at?: string
+  administered_by_profile?: {
+    full_name: string
+  }
 }
 
 export interface VitalSign {
@@ -139,6 +142,8 @@ export interface Memory {
   updated_at?: string
   profiles?: Profile
   memory_reactions?: MemoryReaction[]
+  author_profile?: { full_name: string; avatar_url?: string; role: string }
+  reactions?: MemoryReaction[]
 }
 
 export interface MemoryReaction {
@@ -161,6 +166,10 @@ export interface ClinicalNote {
   created_at: string
   updated_at?: string
   profiles?: Profile
+  author_profile?: {
+    full_name: string
+    role: string
+  }
 }
 
 export interface Appointment {
@@ -178,6 +187,7 @@ export interface Appointment {
   notes?: string
   created_at?: string
   updated_at?: string
+  patient?: Patient
 }
 
 export interface Message {
@@ -192,6 +202,11 @@ export interface Message {
   read_at?: string
   created_at: string
   profiles?: Profile
+  sender_profile?: {
+    full_name: string
+    role: string
+    avatar_url?: string
+  }
 }
 
 export interface MessageThread {
@@ -202,5 +217,6 @@ export interface MessageThread {
   is_group: boolean
   created_at: string
   patients?: Patient
+  patient?: Patient
   messages?: Message[]
 }

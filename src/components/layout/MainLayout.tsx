@@ -8,6 +8,7 @@ import { useUser } from '@/lib/hooks/useUser'
 import { useAppStore } from '@/lib/stores/appStore'
 import { Sheet, SheetContent } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
+import { SOSButton } from '@/components/ui/SOSButton'
 
 interface MainLayoutProps {
   children: React.ReactNode
@@ -30,43 +31,23 @@ export function MainLayout({ children }: MainLayoutProps) {
   useEffect(() => {
     if (!profile) return
 
-    const isLargeFont = profile.large_font_mode || profile.role === 'patient'
-    const isHighContrast = profile.high_contrast_mode
-    const isMotionReduced = profile.motion_reduced
+    const isLargeFont = profile.large_font_mode ?? false
+    const isHighContrast = profile.high_contrast_mode ?? false
+    const isMotionReduced = profile.motion_reduced ?? false
 
-    if (patientLargeFont !== isLargeFont) {
-      setPatientLargeFont(isLargeFont)
-    }
-    if (patientHighContrast !== isHighContrast) {
-      setPatientHighContrast(isHighContrast)
-    }
-    if (patientMotionReduced !== isMotionReduced) {
-      setPatientMotionReduced(isMotionReduced)
-    }
+    setPatientLargeFont(isLargeFont)
+    setPatientHighContrast(isHighContrast)
+    setPatientMotionReduced(isMotionReduced)
 
-    // Modifica le classi del body
-    if (isLargeFont) {
-      document.body.classList.add('large-font-mode')
-    } else {
-      document.body.classList.remove('large-font-mode')
-    }
-
-    if (isHighContrast) {
-      document.body.classList.add('high-contrast-mode')
-    } else {
-      document.body.classList.remove('high-contrast-mode')
-    }
-
-    if (isMotionReduced) {
-      document.body.classList.add('motion-reduced')
-    } else {
-      document.body.classList.remove('motion-reduced')
-    }
+    // Applica le classi al body
+    document.body.classList.toggle('large-font-mode', isLargeFont)
+    document.body.classList.toggle('high-contrast-mode', isHighContrast)
+    document.body.classList.toggle('motion-reduced', isMotionReduced)
   }, [
-    profile,
-    patientLargeFont,
-    patientHighContrast,
-    patientMotionReduced,
+    profile?.id,
+    profile?.large_font_mode,
+    profile?.high_contrast_mode,
+    profile?.motion_reduced,
     setPatientLargeFont,
     setPatientHighContrast,
     setPatientMotionReduced,
@@ -110,6 +91,7 @@ export function MainLayout({ children }: MainLayoutProps) {
         {/* Bottom Navigation Mobile */}
         <BottomNav onMenuClick={() => setSidebarOpen(true)} />
       </div>
+      <SOSButton />
     </div>
   )
 }

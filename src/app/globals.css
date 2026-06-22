@@ -158,6 +158,17 @@ body.large-font-mode button, body.large-font-mode .btn {
   font-size: 1.25rem;
 }
 
+/* Debug Console — isolata da qualsiasi modalità accessibilità */
+[data-debug-console],
+[data-debug-console] *,
+body.large-font-mode [data-debug-console],
+body.large-font-mode [data-debug-console] * {
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  min-height: unset !important;
+  letter-spacing: normal !important;
+}
+
 /* Alto contrasto */
 body.high-contrast-mode {
   --background: #FFFFFF !important;

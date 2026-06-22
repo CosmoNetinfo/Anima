@@ -22,7 +22,7 @@ export default function DashboardPage() {
   if (!profile) {
     return (
       <div className="text-center py-10">
-        <p className="text-muted-foreground">Profilo non caricato. Effettua nuovamente l\'accesso.</p>
+        <p className="text-muted-foreground">{"Profilo non caricato. Effettua nuovamente l'accesso."}</p>
       </div>
     )
   }

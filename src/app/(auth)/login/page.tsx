@@ -166,7 +166,7 @@ export default function LoginPage() {
         </Card>
 
         <p className="text-center text-[11px] text-muted-foreground">
-          L'accesso ad Anima è riservato al personale autorizzato e ai familiari invitati.
+          {"L'accesso ad Anima è riservato al personale autorizzato e ai familiari invitati."}
         </p>
       </div>
     </div>
