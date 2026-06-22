@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { useUserStore } from '@/lib/stores/userStore'
 import { useDebugStore } from '@/lib/stores/debugStore'
 import type { Profile, UserRole } from '@/types'
@@ -12,14 +13,14 @@ export function useUser() {
 
   const activeRole: UserRole | undefined = (overrideRole ?? rawProfile?.role) as UserRole | undefined
 
-  const isRole = (...roles: string[]) => (activeRole ? roles.includes(activeRole) : false)
-  const isPatient   = () => isRole('patient')
-  const isCaregiver = () => isRole('caregiver')
-  const isNurse     = () => isRole('nurse')
-  const isDoctor    = () => isRole('doctor')
-  const isAdmin     = () => isRole('admin', 'super_admin')
-  const isStaff     = () => isRole('admin', 'super_admin', 'doctor', 'nurse')
-  const canEdit     = () => isStaff()
+  const isRole = useCallback((...roles: string[]) => (activeRole ? roles.includes(activeRole) : false), [activeRole])
+  const isPatient   = useCallback(() => isRole('patient'), [isRole])
+  const isCaregiver = useCallback(() => isRole('caregiver'), [isRole])
+  const isNurse     = useCallback(() => isRole('nurse'), [isRole])
+  const isDoctor    = useCallback(() => isRole('doctor'), [isRole])
+  const isAdmin     = useCallback(() => isRole('admin', 'super_admin'), [isRole])
+  const isStaff     = useCallback(() => isRole('admin', 'super_admin', 'doctor', 'nurse'), [isRole])
+  const canEdit     = useCallback(() => isStaff(), [isStaff])
 
   // Profilo effettivo con ruolo override applicato
   const profile: Profile | null = rawProfile && overrideRole
@@ -39,3 +40,4 @@ export function useUser() {
     canEdit,
   }
 }
+
