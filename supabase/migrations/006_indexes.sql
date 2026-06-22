@@ -1,0 +1,22 @@
+-- Indici per ottimizzare le performance delle query (Foreign Keys)
+CREATE INDEX IF NOT EXISTS idx_profiles_structure_id ON profiles(structure_id);
+CREATE INDEX IF NOT EXISTS idx_patients_structure_id ON patients(structure_id);
+CREATE INDEX IF NOT EXISTS idx_patients_profile_id ON patients(profile_id);
+CREATE INDEX IF NOT EXISTS idx_patient_caregivers_patient_id ON patient_caregivers(patient_id);
+CREATE INDEX IF NOT EXISTS idx_patient_caregivers_caregiver_id ON patient_caregivers(caregiver_id);
+CREATE INDEX IF NOT EXISTS idx_medications_patient_id ON medications(patient_id);
+CREATE INDEX IF NOT EXISTS idx_medications_prescribed_by ON medications(prescribed_by);
+CREATE INDEX IF NOT EXISTS idx_medication_logs_medication_id ON medication_logs(medication_id);
+CREATE INDEX IF NOT EXISTS idx_medication_logs_patient_id ON medication_logs(patient_id);
+CREATE INDEX IF NOT EXISTS idx_vital_signs_patient_id ON vital_signs(patient_id);
+CREATE INDEX IF NOT EXISTS idx_vital_thresholds_patient_id ON vital_thresholds(patient_id);
+CREATE INDEX IF NOT EXISTS idx_clinical_notes_patient_id ON clinical_notes(patient_id);
+CREATE INDEX IF NOT EXISTS idx_clinical_notes_author_id ON clinical_notes(author_id);
+CREATE INDEX IF NOT EXISTS idx_appointments_patient_id ON appointments(patient_id);
+CREATE INDEX IF NOT EXISTS idx_mood_entries_patient_id ON mood_entries(patient_id);
+CREATE INDEX IF NOT EXISTS idx_memories_patient_id ON memories(patient_id);
+CREATE INDEX IF NOT EXISTS idx_memories_author_id ON memories(author_id);
+CREATE INDEX IF NOT EXISTS idx_memory_reactions_memory_id ON memory_reactions(memory_id);
+CREATE INDEX IF NOT EXISTS idx_message_threads_patient_id ON message_threads(patient_id);
+CREATE INDEX IF NOT EXISTS idx_messages_thread_id ON messages(thread_id);
+CREATE INDEX IF NOT EXISTS idx_messages_sender_id ON messages(sender_id);
